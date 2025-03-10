@@ -32,6 +32,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'StudioSix - AI Architectural Visualization',
   description: 'Transform your sketches into stunning architectural renders with AI',
+  icons: '/favicon.ico'
 }
 
 export default function RootLayout({
@@ -41,6 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${lato.variable} ${cabin.variable} ${roboto.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+      </head>
       <body className="bg-[#F6F8FA] min-h-screen overflow-x-auto">
         {children}
       </body>
