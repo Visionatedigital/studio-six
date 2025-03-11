@@ -32,9 +32,9 @@ export default function HomePage() {
 
           {/* Buttons */}
           <div className="flex flex-row items-start gap-[10px] absolute left-[75.58%] right-[9.9%] top-[2.25%]">
-            <button className="flex justify-center items-center px-6 py-3 gap-5 w-[95px] h-[43px] bg-[#F4F4F4] rounded-[5px]">
+            <Link href="/sign-in" className="flex justify-center items-center px-6 py-3 gap-5 w-[95px] h-[43px] bg-[#F4F4F4] rounded-[5px]">
               <span className="font-inter text-base font-medium leading-[19px] text-black">Log in</span>
-            </button>
+            </Link>
             <button className="flex justify-center items-center px-6 py-3 gap-5 w-[100px] h-[43px] border-2 border-[#7144D3] rounded-[5px]">
               <span className="font-inter text-base font-medium leading-[19px] text-black">Create</span>
             </button>
