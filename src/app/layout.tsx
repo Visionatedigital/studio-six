@@ -1,6 +1,8 @@
 import './globals.css'
 import { Inter, Poppins, Lato, Cabin, Roboto } from 'next/font/google'
 import type { Metadata } from 'next'
+import { Providers } from './providers'
+import LocomotiveScrollProvider from '@/components/LocomotiveScrollProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,7 +48,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
       </head>
       <body className="bg-[#F6F8FA] min-h-screen overflow-x-auto">
-        {children}
+        <LocomotiveScrollProvider>
+          <Providers>{children}</Providers>
+        </LocomotiveScrollProvider>
       </body>
     </html>
   )

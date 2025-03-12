@@ -39,12 +39,18 @@ export default function HomePage() {
 
           {/* Buttons */}
           <div className="flex flex-row items-center gap-[16px] absolute right-[20px] top-1/2 -translate-y-1/2">
-            <button className="flex justify-center items-center px-6 py-2.5 bg-[#F8F8F8] rounded-lg hover:bg-[#F0F0F0]">
+            <Link 
+              href="/sign-in" 
+              className="flex justify-center items-center px-6 py-2.5 bg-[#F8F8F8] rounded-lg hover:bg-[#F0F0F0]"
+            >
               <span className="font-poppins text-[16px] font-medium whitespace-nowrap text-black">Log in</span>
-            </button>
-            <button className="flex justify-center items-center px-6 py-2.5 border border-[#7144D3] rounded-lg transition-all duration-300 hover:bg-[#7144D3] group">
+            </Link>
+            <Link 
+              href="/dashboard" 
+              className="flex justify-center items-center px-6 py-2.5 border border-[#7144D3] rounded-lg transition-all duration-300 hover:bg-[#7144D3] group"
+            >
               <span className="font-poppins text-[16px] font-medium whitespace-nowrap text-[#7144D3] group-hover:text-white">Create</span>
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
