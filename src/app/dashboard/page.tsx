@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Icon, DropdownArrow } from '@/components/Icons';
+import DashboardLayout from '../../components/DashboardLayout';
+import HeaderActions from '../../components/HeaderActions';
 
 // Helper function to get a random profile icon
 const getRandomProfileIcon = () => {

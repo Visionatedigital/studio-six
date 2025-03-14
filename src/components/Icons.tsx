@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface IconProps {
   name: string;
@@ -7,17 +8,30 @@ interface IconProps {
   isActive?: boolean;
 }
 
-export const Icon: React.FC<IconProps> = ({ name, size = 20, className = '', isActive = false }) => {
-  const iconPath = `/icons/${name}-icon.svg`;
+export const Icon: React.FC<IconProps> = ({ name, size = 24, className = '', isActive = false }) => {
+  const iconColor = isActive ? 'text-[#2A0856]' : 'text-[#202126]';
   
+  // Handle special cases for file names with spaces
+  const getIconPath = (iconName: string) => {
+    switch (iconName) {
+      case 'logout':
+        return '/icons/logout icon.svg';
+      case 'studiosix':
+        return '/icons/StudioSix Icon .svg';
+      case 'verified':
+        return '/icons/verified vector.svg';
+      default:
+        return `/icons/${iconName}-icon.svg`;
+    }
+  };
+
   return (
-    <div 
-      className={`w-${size} h-${size} ${className}`}
-      style={{ width: size, height: size }}
-    >
-      <img 
-        src={iconPath} 
+    <div className={`${iconColor} ${className}`} style={{ width: size, height: size }}>
+      <Image
+        src={getIconPath(name)}
         alt={`${name} icon`}
+        width={size}
+        height={size}
         className="w-full h-full"
       />
     </div>
