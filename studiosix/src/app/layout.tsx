@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Providers } from './providers'
 import LocomotiveScrollProvider from '@/components/LocomotiveScrollProvider'
 import AuthProvider from '@/components/AuthProvider'
+import { defaultMetadata } from './metadata'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,14 +33,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
 })
 
-export const metadata: Metadata = {
-  title: 'StudioSix - AI Architectural Visualization',
-  description: 'Transform your sketches into stunning architectural renders with AI',
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg'
-  }
-}
+export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({
   children,
@@ -50,6 +44,8 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${lato.variable} ${cabin.variable} ${roboto.variable}`}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body className="bg-[#F6F8FA] min-h-screen overflow-x-auto">
         <AuthProvider>

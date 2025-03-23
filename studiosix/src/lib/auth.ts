@@ -1,9 +1,36 @@
 import { NextAuthOptions } from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "./prisma";
+import { User } from "@prisma/client";
+
+// Extend the built-in session types
+declare module "next-auth" {
+  interface User {
+    id: string;
+    email: string;
+    name: string | null;
+    image: string | null;
+    bannerImage: string | null;
+  }
+
+  interface Session {
+    user: User;
+  }
+}
+
+// Extend the built-in JWT types
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    email: string;
+    name: string | null;
+    image: string | null;
+    bannerImage: string | null;
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV === 'development',
@@ -31,11 +58,11 @@ export const authOptions: NextAuthOptions = {
           where: { email: credentials.email }
         });
 
-        if (!user || !user.image) {
+        if (!user || !user.password) {
           throw new Error("Invalid credentials");
         }
 
-        const isValid = await bcrypt.compare(credentials.password, user.image);
+        const isValid = await bcrypt.compare(credentials.password, user.password);
 
         if (!isValid) {
           throw new Error("Invalid credentials");
@@ -43,8 +70,10 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: user.id,
-          email: user.email,
-          name: user.name
+          email: user.email as string,
+          name: user.name,
+          image: user.image,
+          bannerImage: user.bannerImage
         };
       }
     })
@@ -53,12 +82,20 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.email = user.email as string;
+        token.name = user.name;
+        token.image = user.image;
+        token.bannerImage = user.bannerImage;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.name = token.name;
+        session.user.image = token.image;
+        session.user.bannerImage = token.bannerImage;
       }
       return session;
     },
