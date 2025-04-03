@@ -1,0 +1,98 @@
+.faqContainer {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 1162px;
+  margin: 24px auto;
+  background: #FFFFFF;
+  border: 1px solid #C7CCD8;
+  border-radius: 16px;
+}
+
+.iconStyle {
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  background: #D3BBFB;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.01), 0px 2px 4px rgba(135, 80, 255, 0.06);
+  border-radius: 100px;
+  position: relative;
+}
+
+.iconStyle::before,
+.iconStyle::after {
+  content: '';
+  position: absolute;
+  background: #B894F8;
+}
+
+.iconStyle::before {
+  width: 1px;
+  height: 60px;
+  left: 20px;
+  top: 0;
+}
+
+.iconStyle::after {
+  width: 60px;
+  height: 1px;
+  left: 0;
+  top: 20px;
+}
+
+.searchInput {
+  box-sizing: border-box;
+  width: 570px;
+  height: 50px;
+  border: 1px solid #E0DAF3;
+  border-radius: 8px;
+  padding: 13px 19px;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 24px;
+  color: #2F3033;
+}
+
+.searchInput::placeholder {
+  color: #2F3033;
+}
+
+.authorImages {
+  display: flex;
+  align-items: center;
+}
+
+.authorImage {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.authorImage + .authorImage {
+  margin-left: -12px;
+}
+
+.accordion {
+  background: #FFFFFF;
+  border: 1px solid #ECE1FF;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.01), 0px 2px 4px rgba(135, 80, 255, 0.06);
+  border-radius: 10px;
+  padding: 11px 16px;
+  margin-bottom: 20px;
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordionContent {
+  padding-top: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #202126;
+} 
