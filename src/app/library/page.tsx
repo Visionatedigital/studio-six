@@ -7,6 +7,11 @@ import Image from 'next/image';
 import { getRandomProfileIcon } from '@/utils/profileIcons';
 import { useSession } from 'next-auth/react';
 import ShareModal from '@/components/ShareModal';
+import { useRouter } from 'next/navigation';
+import { Post } from '../../types';
+import { PostCard } from '@/components/PostCard';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { ErrorMessage } from '@/components/ErrorMessage';
 
 // Define interfaces at the top level
 interface Comment {
@@ -18,22 +23,6 @@ interface Comment {
     name: string;
     image: string;
   };
-}
-
-interface Post {
-  id: string;
-  imageUrl: string;
-  caption: string;
-  type: 'image' | 'video' | 'document';
-  userId: string;
-  createdAt: string;
-  author: {
-    name: string;
-    image: string;
-  };
-  likesCount: number;
-  commentsCount: number;
-  isLiked: boolean;
 }
 
 interface SelectedFile {
@@ -70,27 +59,34 @@ const levelBadges: Record<number, string> = {
 };
 
 export default function LibraryPage() {
-  const { data: session } = useSession();
+  // Authentication and routing
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // State management
   const [activeTab, setActiveTab] = useState('Your Feed');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [followingStates, setFollowingStates] = useState<{ [key: string]: boolean }>({});
   const [recommendedProfiles, setRecommendedProfiles] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState<Post[]>([]);
   const [comments, setComments] = useState<{ [key: string]: Comment[] }>({});
   const [newComment, setNewComment] = useState<{ [key: string]: string }>({});
   const [showComments, setShowComments] = useState<{ [key: string]: boolean }>({});
-  
-  // New file upload states
   const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Add this to your state declarations at the top of the component
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [caption, setCaption] = useState('');
+  const [postType, setPostType] = useState<'image' | 'video' | 'document'>('image');
 
+  // Refs
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Constants
   const allowedFileTypes = {
     image: '.jpg,.jpeg,.png,.gif,.webp',
     video: '.mp4,.webm,.mov',
@@ -100,57 +96,92 @@ export default function LibraryPage() {
   // Fetch posts
   useEffect(() => {
     const fetchPosts = async () => {
-      if (!session?.user) {
-        console.log('No authenticated user, skipping post fetch');
-        setIsLoading(false);
-        return;
-      }
+      if (status !== 'authenticated') return;
 
       try {
-        console.log('Fetching posts for user:', session.user.id);
-        setIsLoading(true);
-        
-        const response = await fetch('/api/posts', {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        
+        console.log('Starting to fetch posts...');
+        const response = await fetch('/api/posts');
         console.log('Response status:', response.status);
         
+        const data = await response.json();
+        console.log('Response data:', data);
+        
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          console.error('Error response from server:', errorData);
-          throw new Error(errorData.error || `Failed to fetch posts: ${response.status}`);
+          console.error('Error response:', data);
+          throw new Error(
+            `HTTP error! Status: ${response.status}, Message: ${data.error || 'Unknown error'}, Details: ${data.details || 'No details available'}`
+          );
         }
-        
-          const data = await response.json();
-        console.log('API Response:', data);
-        
+
         if (!data.success) {
-          console.error('API returned error:', data);
           throw new Error(data.error || 'Failed to fetch posts');
         }
-        
-        if (!Array.isArray(data.posts)) {
+
+        if (!data.posts || !Array.isArray(data.posts)) {
           console.error('Invalid posts data:', data);
-          throw new Error('Invalid posts data received');
+          throw new Error('Invalid posts data format');
         }
-        
+
         setPosts(data.posts);
+        setError(null);
       } catch (error) {
         console.error('Error fetching posts:', error);
-        // Don't show alert for unauthorized errors
-        if (error instanceof Error && error.message !== 'Unauthorized') {
-          alert(error.message || 'Failed to fetch posts. Please try again.');
+        if (error instanceof Error) {
+          console.error('Error stack:', error.stack);
         }
+        setError(error instanceof Error ? error.message : 'Failed to fetch posts');
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     fetchPosts();
-  }, [session]);
+  }, [status]);
+
+  // Handle authentication
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin');
+    }
+  }, [status, router]);
+
+  // Handle escape key press
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [selectedImage]);
+
+  // Clean up object URLs when component unmounts or file changes
+  useEffect(() => {
+    return () => {
+      if (selectedFile?.preview) {
+        URL.revokeObjectURL(selectedFile.preview);
+      }
+    };
+  }, [selectedFile]);
+
+  if (status === 'loading') {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   const handleLike = async (postId: string) => {
     if (!session?.user) {
@@ -195,23 +226,6 @@ export default function LibraryPage() {
   const handleCloseModal = () => {
     setSelectedImage(null);
   };
-
-  // Handle escape key press
-  React.useEffect(() => {
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleCloseModal();
-      }
-    };
-
-    if (selectedImage) {
-      document.addEventListener('keydown', handleEscapeKey);
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [selectedImage]);
 
   const tabs = [
     { 
@@ -333,95 +347,123 @@ export default function LibraryPage() {
     }
   };
 
-  const handleComment = async (postId: string) => {
-    if (!session?.user) {
-      alert('Please sign in to comment');
-      return;
-    }
-
-    const content = newComment[postId];
-    if (!content?.trim()) {
-      alert('Please enter a comment');
-      return;
-    }
-
+  const toggleComments = async (postId: string) => {
     try {
-      console.log('Adding comment to post:', postId);
+      if (!showComments[postId]) {
+        await fetchComments(postId);
+      }
+      setShowComments(prev => ({
+        ...prev,
+        [postId]: !prev[postId],
+      }));
+    } catch (error) {
+      console.error('Error toggling comments:', error);
+      setError(error instanceof Error ? error.message : 'Failed to toggle comments');
+    }
+  };
+
+  const fetchComments = async (postId: string) => {
+    try {
+      console.log('Fetching comments for post:', postId);
+      const response = await fetch(`/api/posts/${postId}/comments`);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to fetch comments');
+      }
+
+      const data = await response.json();
+      console.log('Fetched comments:', data.comments);
+
+      if (!Array.isArray(data.comments)) {
+        throw new Error('Invalid comments data received');
+      }
+
+      // Transform comments to include default user image if none is provided
+      const transformedComments = data.comments.map(comment => ({
+        ...comment,
+        user: {
+          ...comment.user,
+          image: comment.user?.image || getRandomProfileIcon(),
+        },
+      }));
+
+      setComments(prev => ({
+        ...prev,
+        [postId]: transformedComments,
+      }));
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+      setError(error instanceof Error ? error.message : 'Failed to fetch comments');
+    }
+  };
+
+  const handleComment = async (postId: string) => {
+    try {
+      const commentContent = newComment[postId]?.trim();
+      if (!commentContent) {
+        alert('Please enter a comment');
+        return;
+      }
+
+      console.log('Creating comment for post:', postId);
       const response = await fetch(`/api/posts/${postId}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content: commentContent }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('Error response:', errorData);
-        throw new Error(errorData.error || 'Failed to add comment');
+        throw new Error(errorData.error || 'Failed to create comment');
       }
 
-      const { comment } = await response.json();
-      console.log('Comment added successfully:', comment);
+      const data = await response.json();
+      console.log('Comment created:', data);
 
-      // Update comments state
+      if (!data.comment || !data.comment.user) {
+        throw new Error('Invalid comment data received');
+      }
+
+      // Transform the new comment to include default user image
+      const transformedComment = {
+        ...data.comment,
+        user: {
+          ...data.comment.user,
+          image: data.comment.user.image || getRandomProfileIcon(),
+        },
+      };
+
+      // Update the comments state
       setComments(prev => ({
-          ...prev,
-        [postId]: [comment, ...(prev[postId] || [])],
-        }));
+        ...prev,
+        [postId]: [transformedComment, ...(prev[postId] || [])],
+      }));
+
+      // Update the post's comments count
+      setPosts(prev => prev.map(post => 
+        post.id === postId 
+          ? { ...post, commentsCount: post.commentsCount + 1 }
+          : post
+      ));
 
       // Clear the comment input
       setNewComment(prev => ({
-          ...prev,
+        ...prev,
         [postId]: '',
       }));
 
-      // Update the post's comment count
-      setPosts(prevPosts =>
-        prevPosts.map(post =>
-          post.id === postId
-            ? {
-                ...post,
-                commentsCount: (post.commentsCount || 0) + 1,
-              }
-            : post
-        )
-      );
+      // Show the comments section
+      setShowComments(prev => ({
+        ...prev,
+        [postId]: true,
+      }));
     } catch (error) {
-      console.error('Error adding comment:', error);
-      alert(error instanceof Error ? error.message : 'Failed to add comment. Please try again.');
+      console.error('Error creating comment:', error);
+      setError(error instanceof Error ? error.message : 'Failed to create comment');
     }
-  };
-
-  const toggleComments = async (postId: string) => {
-    if (!showComments[postId]) {
-      try {
-        console.log('Fetching comments for post:', postId);
-        const response = await fetch(`/api/posts/${postId}/comments`);
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error('Error response:', errorData);
-          throw new Error(errorData.error || 'Failed to fetch comments');
-        }
-
-        const { comments: fetchedComments } = await response.json();
-        console.log('Fetched comments:', fetchedComments);
-        
-        setComments(prev => ({
-          ...prev,
-          [postId]: fetchedComments,
-        }));
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-        alert(error instanceof Error ? error.message : 'Failed to fetch comments. Please try again.');
-      }
-    }
-
-    setShowComments(prev => ({
-      ...prev,
-      [postId]: !prev[postId],
-    }));
   };
 
   const handleFileSelect = (type: 'image' | 'video' | 'document') => {
@@ -522,15 +564,6 @@ export default function LibraryPage() {
     }
   };
 
-  // Clean up object URLs when component unmounts or file changes
-  useEffect(() => {
-    return () => {
-      if (selectedFile?.preview) {
-        URL.revokeObjectURL(selectedFile.preview);
-      }
-    };
-  }, [selectedFile]);
-
   // Add this function to handle share button click
   const handleShare = (post: Post) => {
     setSelectedPost(post);
@@ -541,13 +574,17 @@ export default function LibraryPage() {
   const renderPost = (post: Post) => (
     <div key={post.id} className="bg-white rounded-lg shadow-md p-4 mb-4">
       <div className="flex items-center space-x-3 mb-4">
-        <img
-          src={post.author.image}
-          alt={post.author.name}
-          className="w-10 h-10 rounded-full"
-        />
+        <div className="w-10 h-10 rounded-full overflow-hidden">
+          <Image
+            src={post.author?.image || getRandomProfileIcon()}
+            alt={post.author?.name || 'Anonymous'}
+            width={40}
+            height={40}
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div>
-          <h3 className="font-semibold">{post.author.name}</h3>
+          <h3 className="font-semibold">{post.author?.name || 'Anonymous'}</h3>
           <p className="text-sm text-gray-500">
             {new Date(post.createdAt).toLocaleDateString()}
           </p>
@@ -556,23 +593,23 @@ export default function LibraryPage() {
 
       {/* Post content */}
       <div className="mt-4">
-        {post.type === 'image' && (
+        {post.type === 'image' && post.imageUrl && (
           <Image
             src={post.imageUrl}
-            alt={post.caption}
+            alt={post.caption || 'Post image'}
             width={500}
             height={500}
             className="rounded-lg w-full"
           />
         )}
-        {post.type === 'video' && (
+        {post.type === 'video' && post.imageUrl && (
           <video
             src={post.imageUrl}
             controls
             className="rounded-lg w-full"
           />
         )}
-        {post.type === 'document' && (
+        {post.type === 'document' && post.imageUrl && (
           <a
             href={post.imageUrl}
             target="_blank"
@@ -586,7 +623,9 @@ export default function LibraryPage() {
       </div>
 
       {/* Post caption */}
-      <p className="mt-2 text-gray-700">{post.caption}</p>
+      {post.caption && (
+        <p className="mt-2 text-gray-700">{post.caption}</p>
+      )}
 
       {/* Post actions */}
       <div className="flex items-center space-x-4 mt-4">
@@ -644,10 +683,10 @@ export default function LibraryPage() {
           <div className="mt-4 space-y-4">
             {comments[post.id]?.map((comment) => (
               <div key={comment.id} className="flex space-x-3">
-                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                <div className="w-8 h-8 rounded-full overflow-hidden">
                   <Image
-                    src={comment.user.image}
-                    alt={comment.user.name}
+                    src={comment.user?.image || getRandomProfileIcon()}
+                    alt={comment.user?.name || 'Anonymous'}
                     width={32}
                     height={32}
                     className="w-full h-full object-cover"
@@ -655,7 +694,7 @@ export default function LibraryPage() {
                 </div>
                 <div className="flex-1">
                   <div className="bg-gray-100 rounded-lg px-3 py-2">
-                    <p className="font-medium text-sm">{comment.user.name}</p>
+                    <p className="font-medium text-sm">{comment.user?.name || 'Anonymous'}</p>
                     <p className="text-sm text-gray-700">{comment.content}</p>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">
@@ -811,7 +850,7 @@ export default function LibraryPage() {
 
               {/* Feed Posts */}
               <div className="space-y-4">
-                {isLoading ? (
+                {loading ? (
                   <div className="text-center py-4">Loading...</div>
                 ) : posts.length === 0 ? (
                   <div className="text-center py-4 text-gray-500">No posts yet</div>
@@ -827,7 +866,7 @@ export default function LibraryPage() {
               <div className="bg-white rounded-xl border border-[#E0DAF3] p-4 mb-4">
                 <h3 className="text-lg font-medium text-[#202126] mb-4">Recommended profiles</h3>
                 <div className="space-y-4">
-                  {isLoading ? (
+                  {loading ? (
                     <div className="flex justify-center items-center h-32">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
                     </div>

@@ -1,0 +1,620 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\LUBS\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.2.0
+2 info using node@v22.14.0
+3 silly config load:file:C:\Users\LUBS\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\LUBS\Desktop\Studio-six\studiosix\.npmrc
+5 silly config load:file:C:\Users\LUBS\.npmrc
+6 silly config load:file:C:\Users\LUBS\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install"
+9 verbose logfile logs-max:10 dir:C:\Users\LUBS\Desktop\Studio-six\studiosix\npm-cache\_logs\2025-04-03T11_57_51_631Z-
+10 verbose logfile C:\Users\LUBS\Desktop\Studio-six\studiosix\npm-cache\_logs\2025-04-03T11_57_51_631Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly reify moves {}
+16 silly audit bulk request {
+16 silly audit   '@auth/core': [ '0.34.2' ],
+16 silly audit   cookie: [ '0.6.0', '0.7.2' ],
+16 silly audit   jose: [ '5.10.0', '4.15.9' ],
+16 silly audit   preact: [ '10.11.3', '10.26.4' ],
+16 silly audit   'preact-render-to-string': [ '5.2.3', '5.2.6' ],
+16 silly audit   '@babel/runtime': [ '7.26.9' ],
+16 silly audit   '@emnapi/runtime': [ '1.3.1' ],
+16 silly audit   '@esbuild/aix-ppc64': [ '0.25.1' ],
+16 silly audit   '@esbuild/android-arm': [ '0.25.1' ],
+16 silly audit   '@esbuild/android-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/android-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/darwin-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/darwin-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/freebsd-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/freebsd-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-arm': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-ia32': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-loong64': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-mips64el': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-ppc64': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-riscv64': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-s390x': [ '0.25.1' ],
+16 silly audit   '@esbuild/linux-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/netbsd-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/netbsd-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/openbsd-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/openbsd-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/sunos-x64': [ '0.25.1' ],
+16 silly audit   '@esbuild/win32-arm64': [ '0.25.1' ],
+16 silly audit   '@esbuild/win32-ia32': [ '0.25.1' ],
+16 silly audit   '@esbuild/win32-x64': [ '0.25.1' ],
+16 silly audit   '@floating-ui/core': [ '1.6.9' ],
+16 silly audit   '@floating-ui/dom': [ '1.6.13' ],
+16 silly audit   '@floating-ui/react': [ '0.26.28' ],
+16 silly audit   '@floating-ui/react-dom': [ '2.1.2' ],
+16 silly audit   '@floating-ui/utils': [ '0.2.9' ],
+16 silly audit   '@headlessui/react': [ '2.2.0' ],
+16 silly audit   '@heroicons/react': [ '2.2.0' ],
+16 silly audit   '@img/sharp-darwin-arm64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-darwin-x64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-linux-arm': [ '1.0.5' ],
+16 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-linux-x64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.0.4' ],
+16 silly audit   '@img/sharp-linux-arm': [ '0.33.5' ],
+16 silly audit   '@img/sharp-linux-arm64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-linux-s390x': [ '0.33.5' ],
+16 silly audit   '@img/sharp-linux-x64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-linuxmusl-x64': [ '0.33.5' ],
+16 silly audit   '@img/sharp-wasm32': [ '0.33.5' ],
+16 silly audit   '@img/sharp-win32-ia32': [ '0.33.5' ],
+16 silly audit   '@img/sharp-win32-x64': [ '0.33.5' ],
+16 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+16 silly audit   '@jridgewell/gen-mapping': [ '0.3.8' ],
+16 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+16 silly audit   '@jridgewell/set-array': [ '1.2.1' ],
+16 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.0' ],
+16 silly audit   '@jridgewell/trace-mapping': [ '0.3.25' ],
+16 silly audit   '@next-auth/prisma-adapter': [ '1.0.7' ],
+16 silly audit   '@next/env': [ '15.2.1' ],
+16 silly audit   '@next/swc-darwin-arm64': [ '15.2.1' ],
+16 silly audit   '@next/swc-darwin-x64': [ '15.2.1' ],
+16 silly audit   '@next/swc-linux-arm64-gnu': [ '15.2.1' ],
+16 silly audit   '@next/swc-linux-arm64-musl': [ '15.2.1' ],
+16 silly audit   '@next/swc-linux-x64-gnu': [ '15.2.1' ],
+16 silly audit   '@next/swc-linux-x64-musl': [ '15.2.1' ],
+16 silly audit   '@next/swc-win32-arm64-msvc': [ '15.2.1' ],
+16 silly audit   '@next/swc-win32-x64-msvc': [ '15.2.1' ],
+16 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+16 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+16 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+16 silly audit   '@panva/hkdf': [ '1.2.1' ],
+16 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+16 silly audit   '@prisma/client': [ '6.5.0' ],
+16 silly audit   '@prisma/config': [ '6.5.0' ],
+16 silly audit   '@prisma/debug': [ '6.5.0' ],
+16 silly audit   '@prisma/engines': [ '6.5.0' ],
+16 silly audit   '@prisma/engines-version': [ '6.5.0-73.173f8d54f8d52e692c7e27e72a88314ec7aeff60' ],
+16 silly audit   '@prisma/fetch-engine': [ '6.5.0' ],
+16 silly audit   '@prisma/get-platform': [ '6.5.0' ],
+16 silly audit   '@react-aria/focus': [ '3.20.1' ],
+16 silly audit   '@react-aria/interactions': [ '3.24.1' ],
+16 silly audit   '@react-aria/ssr': [ '3.9.7' ],
+16 silly audit   '@react-aria/utils': [ '3.28.1' ],
+16 silly audit   '@react-stately/flags': [ '3.1.0' ],
+16 silly audit   '@react-stately/utils': [ '3.10.5' ],
+16 silly audit   '@react-types/shared': [ '3.28.0' ],
+16 silly audit   '@swc/counter': [ '0.1.3' ],
+16 silly audit   '@swc/helpers': [ '0.5.15' ],
+16 silly audit   '@tanstack/react-virtual': [ '3.13.4' ],
+16 silly audit   '@tanstack/virtual-core': [ '3.13.4' ],
+16 silly audit   '@types/bcryptjs': [ '2.4.6' ],
+16 silly audit   '@types/cookie': [ '0.6.0' ],
+16 silly audit   '@types/locomotive-scroll': [ '4.1.4' ],
+16 silly audit   '@types/node': [ '20.17.24' ],
+16 silly audit   '@types/prop-types': [ '15.7.14' ],
+16 silly audit   '@types/react': [ '18.3.18' ],
+16 silly audit   '@types/react-dom': [ '18.3.5' ],
+16 silly audit   '@types/react-reconciler': [ '0.28.9' ],
+16 silly audit   '@types/uuid': [ '10.0.0' ],
+16 silly audit   'ansi-regex': [ '6.1.0', '5.0.1' ],
+16 silly audit   'ansi-styles': [ '6.2.1', '4.3.0' ],
+16 silly audit   'any-promise': [ '1.3.0' ],
+16 silly audit   anymatch: [ '3.1.3' ],
+16 silly audit   arg: [ '5.0.2' ],
+16 silly audit   autoprefixer: [ '10.4.14' ],
+16 silly audit   'balanced-match': [ '1.0.2' ],
+16 silly audit   bcryptjs: [ '3.0.2' ],
+16 silly audit   'bezier-easing': [ '2.1.0' ],
+16 silly audit   'binary-extensions': [ '2.3.0' ],
+16 silly audit   'bindall-standalone': [ '1.0.5' ],
+16 silly audit   'brace-expansion': [ '2.0.1' ],
+16 silly audit   braces: [ '3.0.3' ],
+16 silly audit   browserslist: [ '4.24.4' ],
+16 silly audit   busboy: [ '1.6.0' ],
+16 silly audit   'camelcase-css': [ '2.0.1' ],
+16 silly audit   'caniuse-lite': [ '1.0.30001702' ],
+16 silly audit   chokidar: [ '3.6.0' ],
+16 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+16 silly audit   'client-only': [ '0.0.1' ],
+16 silly audit   clsx: [ '2.1.1' ],
+16 silly audit   color: [ '4.2.3' ],
+16 silly audit   'color-convert': [ '2.0.1' ],
+16 silly audit   'color-name': [ '1.1.4' ],
+16 silly audit   'color-string': [ '1.9.1' ],
+16 silly audit   commander: [ '4.1.1' ],
+16 silly audit   'cross-spawn': [ '7.0.6' ],
+16 silly audit   cssesc: [ '3.0.0' ],
+16 silly audit   csstype: [ '3.1.3' ],
+16 silly audit   'date-fns': [ '4.1.0' ],
+16 silly audit   debug: [ '4.4.0' ],
+16 silly audit   'detect-libc': [ '2.0.3' ],
+16 silly audit   didyoumean: [ '1.2.2' ],
+16 silly audit   dlv: [ '1.1.3' ],
+16 silly audit   eastasianwidth: [ '0.2.0' ],
+16 silly audit   'electron-to-chromium': [ '1.5.113' ],
+16 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+16 silly audit   esbuild: [ '0.25.1' ],
+16 silly audit   'esbuild-register': [ '3.6.0' ],
+16 silly audit   escalade: [ '3.2.0' ],
+16 silly audit   'fast-glob': [ '3.3.3' ],
+16 silly audit   fastq: [ '1.19.1' ],
+16 silly audit   'fill-range': [ '7.1.1' ],
+16 silly audit   'foreground-child': [ '3.3.1' ],
+16 silly audit   'fraction.js': [ '4.3.7' ],
+16 silly audit   fsevents: [ '2.3.3' ],
+16 silly audit   'function-bind': [ '1.1.2' ],
+16 silly audit   glob: [ '10.4.5' ],
+16 silly audit   hasown: [ '2.0.2' ],
+16 silly audit   'is-arrayish': [ '0.3.2' ],
+16 silly audit   'is-binary-path': [ '2.1.0' ],
+16 silly audit   'is-core-module': [ '2.16.1' ],
+16 silly audit   'is-extglob': [ '2.1.1' ],
+16 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+16 silly audit   'is-glob': [ '4.0.3' ],
+16 silly audit   'is-number': [ '7.0.0' ],
+16 silly audit   isexe: [ '2.0.0' ],
+16 silly audit   'its-fine': [ '2.0.0' ],
+16 silly audit   jackspeak: [ '3.4.3' ],
+16 silly audit   jiti: [ '1.21.7' ],
+16 silly audit   konva: [ '9.3.19' ],
+16 silly audit   lethargy: [ '1.0.9' ],
+16 silly audit   lilconfig: [ '2.1.0' ],
+16 silly audit   'lines-and-columns': [ '1.2.4' ],
+16 silly audit   'locomotive-scroll': [ '4.1.4' ],
+16 silly audit   'lru-cache': [ '10.4.3', '6.0.0' ],
+16 silly audit   merge2: [ '1.4.1' ],
+16 silly audit   micromatch: [ '4.0.8' ],
+16 silly audit   minimatch: [ '9.0.5' ],
+16 silly audit   minipass: [ '7.1.2' ],
+16 silly audit   ms: [ '2.1.3' ],
+16 silly audit   mz: [ '2.7.0' ],
+16 silly audit   nanoid: [ '3.3.9' ],
+16 silly audit   next: [ '15.2.1' ],
+16 silly audit   'next-auth': [ '4.24.11' ],
+16 silly audit   uuid: [ '8.3.2', '11.1.0' ],
+16 silly audit   postcss: [ '8.4.31', '8.4.21' ],
+16 silly audit   'node-releases': [ '2.0.19' ],
+16 silly audit   'normalize-path': [ '3.0.0' ],
+16 silly audit   'normalize-range': [ '0.1.2' ],
+16 silly audit   oauth: [ '0.9.15' ],
+16 silly audit   oauth4webapi: [ '2.17.0' ],
+16 silly audit   'object-assign': [ '4.1.1' ],
+16 silly audit   'object-hash': [ '3.0.0', '2.2.0' ],
+16 silly audit   'oidc-token-hash': [ '5.1.0' ],
+16 silly audit   'openid-client': [ '5.7.1' ],
+16 silly audit   'package-json-from-dist': [ '1.0.1' ],
+16 silly audit   'path-key': [ '3.1.1' ],
+16 silly audit   'path-parse': [ '1.0.7' ],
+16 silly audit   'path-scurry': [ '1.11.1' ],
+16 silly audit   picocolors: [ '1.1.1' ],
+16 silly audit   picomatch: [ '2.3.1' ],
+16 silly audit   pify: [ '2.3.0' ],
+16 silly audit   pirates: [ '4.0.6' ],
+16 silly audit   'postcss-import': [ '14.1.0' ],
+16 silly audit   'postcss-js': [ '4.0.1' ],
+16 silly audit   'postcss-load-config': [ '3.1.4' ],
+16 silly audit   'postcss-nested': [ '6.0.0' ],
+16 silly audit   'postcss-selector-parser': [ '6.1.2' ],
+16 silly audit   'postcss-value-parser': [ '4.2.0' ],
+16 silly audit   'pretty-format': [ '3.8.0' ],
+16 silly audit   prisma: [ '6.5.0' ],
+16 silly audit   'queue-microtask': [ '1.2.3' ],
+16 silly audit   'quick-lru': [ '5.1.1' ],
+16 silly audit   react: [ '19.0.0' ],
+16 silly audit   'react-dom': [ '19.0.0' ],
+16 silly audit   'react-konva': [ '19.0.3' ],
+16 silly audit   'react-reconciler': [ '0.31.0' ],
+16 silly audit   'read-cache': [ '1.0.0' ],
+16 silly audit   readdirp: [ '3.6.0' ],
+16 silly audit   'regenerator-runtime': [ '0.14.1' ],
+16 silly audit   resolve: [ '1.22.10' ],
+16 silly audit   reusify: [ '1.1.0' ],
+16 silly audit   'run-parallel': [ '1.2.0' ],
+16 silly audit   scheduler: [ '0.25.0' ],
+16 silly audit   'schema-dts': [ '1.1.5' ],
+16 silly audit   semver: [ '7.7.1' ],
+16 silly audit   sharp: [ '0.33.5' ],
+16 silly audit   'shebang-command': [ '2.0.0' ],
+16 silly audit   'shebang-regex': [ '3.0.0' ],
+16 silly audit   'signal-exit': [ '4.1.0' ],
+16 silly audit   'simple-swizzle': [ '0.2.2' ],
+16 silly audit   'smoothscroll-polyfill': [ '0.4.4' ],
+16 silly audit   'source-map-js': [ '1.2.1' ],
+16 silly audit   streamsearch: [ '1.1.0' ],
+16 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+16 silly audit   'strip-ansi': [ '6.0.1', '7.1.0' ],
+16 silly audit   'styled-jsx': [ '5.1.6' ],
+16 silly audit   sucrase: [ '3.35.0' ],
+16 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+16 silly audit   tabbable: [ '6.2.0' ],
+16 silly audit   'tailwind-merge': [ '3.0.2' ],
+16 silly audit   tailwindcss: [ '3.3.0' ],
+16 silly audit   thenify: [ '3.3.1' ],
+16 silly audit   'thenify-all': [ '1.6.0' ],
+16 silly audit   'tiny-emitter': [ '1.2.0' ],
+16 silly audit   'to-regex-range': [ '5.0.1' ],
+16 silly audit   'ts-interface-checker': [ '0.1.13' ],
+16 silly audit   tslib: [ '2.8.1' ],
+16 silly audit   typescript: [ '5.8.2' ],
+16 silly audit   'undici-types': [ '6.19.8' ],
+16 silly audit   'update-browserslist-db': [ '1.1.3' ],
+16 silly audit   'util-deprecate': [ '1.0.2' ],
+16 silly audit   'virtual-scroll': [ '1.5.2' ],
+16 silly audit   which: [ '2.0.2' ],
+16 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+16 silly audit   yallist: [ '4.0.0' ],
+16 silly audit   yaml: [ '1.10.2' ]
+16 silly audit }
+17 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\fsevents
+18 silly reify mark deleted [
+18 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\fsevents'
+18 silly reify ]
+19 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-win32-arm64-msvc
+20 silly reify mark deleted [
+20 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-win32-arm64-msvc'
+20 silly reify ]
+21 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-linux-x64-musl
+22 silly reify mark deleted [
+22 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-linux-x64-musl'
+22 silly reify ]
+23 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-linux-x64-gnu
+24 silly reify mark deleted [
+24 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-linux-x64-gnu'
+24 silly reify ]
+25 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-linux-arm64-musl
+26 silly reify mark deleted [
+26 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-linux-arm64-musl'
+26 silly reify ]
+27 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-linux-arm64-gnu
+28 silly reify mark deleted [
+28 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-linux-arm64-gnu'
+28 silly reify ]
+29 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-darwin-x64
+30 silly reify mark deleted [
+30 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-darwin-x64'
+30 silly reify ]
+31 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@next\swc-darwin-arm64
+32 silly reify mark deleted [
+32 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@next\\swc-darwin-arm64'
+32 silly reify ]
+33 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-win32-ia32
+34 silly reify mark deleted [
+34 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-win32-ia32'
+34 silly reify ]
+35 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-wasm32
+36 silly reify mark deleted [
+36 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-wasm32'
+36 silly reify ]
+37 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@emnapi\runtime
+38 silly reify mark deleted [
+38 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@emnapi\\runtime'
+38 silly reify ]
+39 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linuxmusl-x64
+40 silly reify mark deleted [
+40 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linuxmusl-x64'
+40 silly reify ]
+41 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linuxmusl-arm64
+42 silly reify mark deleted [
+42 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linuxmusl-arm64'
+42 silly reify ]
+43 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linux-x64
+44 silly reify mark deleted [
+44 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linux-x64'
+44 silly reify ]
+45 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linux-s390x
+46 silly reify mark deleted [
+46 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linux-s390x'
+46 silly reify ]
+47 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linux-arm64
+48 silly reify mark deleted [
+48 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linux-arm64'
+48 silly reify ]
+49 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-linux-arm
+50 silly reify mark deleted [
+50 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-linux-arm'
+50 silly reify ]
+51 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linuxmusl-x64
+52 silly reify mark deleted [
+52 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linuxmusl-x64'
+52 silly reify ]
+53 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linuxmusl-arm64
+54 silly reify mark deleted [
+54 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linuxmusl-arm64'
+54 silly reify ]
+55 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linux-x64
+56 silly reify mark deleted [
+56 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linux-x64'
+56 silly reify ]
+57 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linux-s390x
+58 silly reify mark deleted [
+58 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linux-s390x'
+58 silly reify ]
+59 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linux-arm64
+60 silly reify mark deleted [
+60 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linux-arm64'
+60 silly reify ]
+61 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-linux-arm
+62 silly reify mark deleted [
+62 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-linux-arm'
+62 silly reify ]
+63 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-darwin-x64
+64 silly reify mark deleted [
+64 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-darwin-x64'
+64 silly reify ]
+65 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-libvips-darwin-arm64
+66 silly reify mark deleted [
+66 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-libvips-darwin-arm64'
+66 silly reify ]
+67 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-darwin-x64
+68 silly reify mark deleted [
+68 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-darwin-x64'
+68 silly reify ]
+69 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@img\sharp-darwin-arm64
+70 silly reify mark deleted [
+70 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@img\\sharp-darwin-arm64'
+70 silly reify ]
+71 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\win32-ia32
+72 silly reify mark deleted [
+72 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\win32-ia32'
+72 silly reify ]
+73 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\win32-arm64
+74 silly reify mark deleted [
+74 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\win32-arm64'
+74 silly reify ]
+75 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\sunos-x64
+76 silly reify mark deleted [
+76 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\sunos-x64'
+76 silly reify ]
+77 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\openbsd-x64
+78 silly reify mark deleted [
+78 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\openbsd-x64'
+78 silly reify ]
+79 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\openbsd-arm64
+80 silly reify mark deleted [
+80 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\openbsd-arm64'
+80 silly reify ]
+81 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\netbsd-x64
+82 silly reify mark deleted [
+82 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\netbsd-x64'
+82 silly reify ]
+83 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\netbsd-arm64
+84 silly reify mark deleted [
+84 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\netbsd-arm64'
+84 silly reify ]
+85 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-x64
+86 silly reify mark deleted [
+86 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-x64'
+86 silly reify ]
+87 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-s390x
+88 silly reify mark deleted [
+88 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-s390x'
+88 silly reify ]
+89 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-riscv64
+90 silly reify mark deleted [
+90 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-riscv64'
+90 silly reify ]
+91 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-ppc64
+92 silly reify mark deleted [
+92 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-ppc64'
+92 silly reify ]
+93 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-mips64el
+94 silly reify mark deleted [
+94 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-mips64el'
+94 silly reify ]
+95 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-loong64
+96 silly reify mark deleted [
+96 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-loong64'
+96 silly reify ]
+97 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-ia32
+98 silly reify mark deleted [
+98 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-ia32'
+98 silly reify ]
+99 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-arm64
+100 silly reify mark deleted [
+100 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-arm64'
+100 silly reify ]
+101 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\linux-arm
+102 silly reify mark deleted [
+102 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\linux-arm'
+102 silly reify ]
+103 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\freebsd-x64
+104 silly reify mark deleted [
+104 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\freebsd-x64'
+104 silly reify ]
+105 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\freebsd-arm64
+106 silly reify mark deleted [
+106 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\freebsd-arm64'
+106 silly reify ]
+107 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\darwin-x64
+108 silly reify mark deleted [
+108 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\darwin-x64'
+108 silly reify ]
+109 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\darwin-arm64
+110 silly reify mark deleted [
+110 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\darwin-arm64'
+110 silly reify ]
+111 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\android-x64
+112 silly reify mark deleted [
+112 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\android-x64'
+112 silly reify ]
+113 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\android-arm64
+114 silly reify mark deleted [
+114 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\android-arm64'
+114 silly reify ]
+115 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\android-arm
+116 silly reify mark deleted [
+116 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\android-arm'
+116 silly reify ]
+117 verbose reify failed optional dependency C:\Users\LUBS\Desktop\Studio-six\studiosix\node_modules\@esbuild\aix-ppc64
+118 silly reify mark deleted [
+118 silly reify   'C:\\Users\\LUBS\\Desktop\\Studio-six\\studiosix\\node_modules\\@esbuild\\aix-ppc64'
+118 silly reify ]
+119 http cache @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.3.1.tgz 0ms (cache hit)
+120 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 1148ms
+121 silly audit report {
+121 silly audit report   cookie: [
+121 silly audit report     {
+121 silly audit report       id: 1099846,
+121 silly audit report       url: 'https://github.com/advisories/GHSA-pxg6-pf52-xh8x',
+121 silly audit report       title: 'cookie accepts cookie name, path, and domain with out of bounds characters',
+121 silly audit report       severity: 'low',
+121 silly audit report       vulnerable_versions: '<0.7.0',
+121 silly audit report       cwe: [Array],
+121 silly audit report       cvss: [Object]
+121 silly audit report     }
+121 silly audit report   ],
+121 silly audit report   '@babel/runtime': [
+121 silly audit report     {
+121 silly audit report       id: 1103025,
+121 silly audit report       url: 'https://github.com/advisories/GHSA-968p-4wvh-cqc8',
+121 silly audit report       title: 'Babel has inefficient RexExp complexity in generated code with .replace when transpiling named capturing groups',
+121 silly audit report       severity: 'moderate',
+121 silly audit report       vulnerable_versions: '<7.26.10',
+121 silly audit report       cwe: [Array],
+121 silly audit report       cvss: [Object]
+121 silly audit report     }
+121 silly audit report   ],
+121 silly audit report   next: [
+121 silly audit report     {
+121 silly audit report       id: 1103621,
+121 silly audit report       url: 'https://github.com/advisories/GHSA-f82v-jwr5-mffw',
+121 silly audit report       title: 'Authorization Bypass in Next.js Middleware',
+121 silly audit report       severity: 'critical',
+121 silly audit report       vulnerable_versions: '>=15.0.0 <15.2.3',
+121 silly audit report       cwe: [Array],
+121 silly audit report       cvss: [Object]
+121 silly audit report     }
+121 silly audit report   ],
+121 silly audit report   postcss: [
+121 silly audit report     {
+121 silly audit report       id: 1094544,
+121 silly audit report       url: 'https://github.com/advisories/GHSA-7fh5-64p2-3v2j',
+121 silly audit report       title: 'PostCSS line return parsing error',
+121 silly audit report       severity: 'moderate',
+121 silly audit report       vulnerable_versions: '<8.4.31',
+121 silly audit report       cwe: [Array],
+121 silly audit report       cvss: [Object]
+121 silly audit report     }
+121 silly audit report   ]
+121 silly audit report }
+122 silly packumentCache corgi:https://registry.npmjs.org/cookie cache-miss
+123 silly packumentCache corgi:https://registry.npmjs.org/@babel%2fruntime cache-miss
+124 silly packumentCache corgi:https://registry.npmjs.org/next cache-miss
+125 silly packumentCache corgi:https://registry.npmjs.org/postcss cache-miss
+126 http fetch GET 200 https://registry.npmjs.org/cookie 478ms (cache updated)
+127 silly packumentCache corgi:https://registry.npmjs.org/cookie set size:undefined disposed:false
+128 http fetch GET 200 https://registry.npmjs.org/@babel%2fruntime 3851ms (cache updated)
+129 silly packumentCache corgi:https://registry.npmjs.org/@babel%2fruntime set size:undefined disposed:false
+130 http fetch GET 200 https://registry.npmjs.org/postcss 4751ms (cache updated)
+131 silly packumentCache corgi:https://registry.npmjs.org/postcss set size:undefined disposed:false
+132 http fetch GET 200 https://registry.npmjs.org/next 7744ms (cache updated)
+133 silly packumentCache corgi:https://registry.npmjs.org/next set size:undefined disposed:false
+134 silly packumentCache corgi:https://registry.npmjs.org/@auth%2fcore cache-miss
+135 http fetch GET 200 https://registry.npmjs.org/@auth%2fcore 385ms (cache updated)
+136 silly packumentCache corgi:https://registry.npmjs.org/@auth%2fcore set size:undefined disposed:false
+137 silly packumentCache corgi:https://registry.npmjs.org/next-auth cache-miss
+138 http fetch GET 200 https://registry.npmjs.org/next-auth 2482ms (cache updated)
+139 silly packumentCache corgi:https://registry.npmjs.org/next-auth set size:undefined disposed:false
+140 silly packumentCache corgi:https://registry.npmjs.org/autoprefixer cache-miss
+141 silly packumentCache corgi:https://registry.npmjs.org/postcss-import cache-miss
+142 silly packumentCache corgi:https://registry.npmjs.org/postcss-js cache-miss
+143 silly packumentCache corgi:https://registry.npmjs.org/postcss-load-config cache-miss
+144 silly packumentCache corgi:https://registry.npmjs.org/postcss-nested cache-miss
+145 silly packumentCache corgi:https://registry.npmjs.org/tailwindcss cache-miss
+146 http fetch GET 200 https://registry.npmjs.org/postcss-js 171ms (cache updated)
+147 silly packumentCache corgi:https://registry.npmjs.org/postcss-js set size:undefined disposed:false
+148 http fetch GET 200 https://registry.npmjs.org/postcss-load-config 195ms (cache updated)
+149 silly packumentCache corgi:https://registry.npmjs.org/postcss-load-config set size:undefined disposed:false
+150 http fetch GET 200 https://registry.npmjs.org/postcss-import 202ms (cache updated)
+151 silly packumentCache corgi:https://registry.npmjs.org/postcss-import set size:undefined disposed:false
+152 http fetch GET 200 https://registry.npmjs.org/postcss-nested 437ms (cache updated)
+153 silly packumentCache corgi:https://registry.npmjs.org/postcss-nested set size:undefined disposed:false
+154 http fetch GET 200 https://registry.npmjs.org/autoprefixer 1411ms (cache updated)
+155 silly packumentCache corgi:https://registry.npmjs.org/autoprefixer set size:undefined disposed:false
+156 http fetch GET 200 https://registry.npmjs.org/tailwindcss 4891ms (cache updated)
+157 silly packumentCache corgi:https://registry.npmjs.org/tailwindcss set size:undefined disposed:false
+158 silly packumentCache corgi:https://registry.npmjs.org/@next-auth%2fprisma-adapter cache-miss
+159 http fetch GET 200 https://registry.npmjs.org/@next-auth%2fprisma-adapter 681ms (cache updated)
+160 silly packumentCache corgi:https://registry.npmjs.org/@next-auth%2fprisma-adapter set size:undefined disposed:false
+161 silly ADD
+162 silly ADD
+163 silly ADD
+164 silly ADD
+165 silly ADD
+166 silly ADD
+167 silly ADD
+168 silly ADD
+169 silly ADD
+170 silly ADD
+171 silly ADD
+172 silly ADD
+173 silly ADD
+174 silly ADD
+175 silly ADD
+176 silly ADD
+177 silly ADD
+178 silly ADD
+179 silly ADD
+180 silly ADD
+181 silly ADD
+182 silly ADD
+183 silly ADD
+184 silly ADD
+185 silly ADD
+186 silly ADD
+187 silly ADD
+188 silly ADD
+189 silly ADD
+190 silly ADD
+191 silly ADD
+192 silly ADD
+193 silly ADD
+194 silly ADD
+195 silly ADD
+196 silly ADD
+197 silly ADD
+198 silly ADD
+199 silly ADD
+200 silly ADD
+201 silly ADD
+202 silly ADD
+203 silly ADD
+204 silly ADD
+205 silly ADD
+206 silly ADD
+207 silly ADD
+208 silly ADD
+209 silly ADD
+210 silly ADD
+211 silly ADD
+212 verbose cwd C:\Users\LUBS\Desktop\Studio-six\studiosix
+213 verbose os Windows_NT 10.0.19045
+214 verbose node v22.14.0
+215 verbose npm  v11.2.0
+216 verbose exit 0
+217 info ok

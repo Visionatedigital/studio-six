@@ -1,15 +1,22 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../../../auth/[...nextauth]/auth.config';
+import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 export async function GET(
-  req: Request,
+  request: Request,
   { params }: { params: { postId: string } }
 ) {
   try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const postId = params.postId;
-    console.log('Fetching comments for post:', postId);
 
     const comments = await prisma.comment.findMany({
       where: {
@@ -29,55 +36,45 @@ export async function GET(
       },
     });
 
-    console.log('Found comments:', comments.length);
     return NextResponse.json({ comments });
   } catch (error) {
     console.error('Error fetching comments:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch comments' },
+      { error: 'Internal Server Error' },
       { status: 500 }
     );
   }
 }
 
 export async function POST(
-  req: Request,
+  request: Request,
   { params }: { params: { postId: string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      console.log('Unauthorized attempt to comment');
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const postId = params.postId;
-    const { content } = await req.json();
-
-    if (!content?.trim()) {
+    if (!session?.user) {
       return NextResponse.json(
-        { error: 'Comment content is required' },
-        { status: 400 }
+        { error: 'Unauthorized' },
+        { status: 401 }
       );
     }
 
-    console.log('Creating comment for post:', postId, 'by user:', session.user.id);
+    const postId = params.postId;
+    const userId = session.user.id;
+    const { content } = await request.json();
 
-    // First check if the post exists
-    const post = await prisma.post.findUnique({
-      where: { id: postId },
-    });
-
-    if (!post) {
-      console.log('Post not found:', postId);
-      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+    if (!content) {
+      return NextResponse.json(
+        { error: 'Content is required' },
+        { status: 400 }
+      );
     }
 
     const comment = await prisma.comment.create({
       data: {
         content,
         postId,
-        userId: session.user.id,
+        userId,
       },
       include: {
         user: {
@@ -90,15 +87,13 @@ export async function POST(
       },
     });
 
-    console.log('Comment created successfully:', comment.id);
-
-    // Increment comments count
+    // Update the post's comments count
     await prisma.post.update({
       where: { id: postId },
       data: {
         commentsCount: {
-          increment: 1
-        }
+          increment: 1,
+        },
       },
     });
 
@@ -106,7 +101,7 @@ export async function POST(
   } catch (error) {
     console.error('Error creating comment:', error);
     return NextResponse.json(
-      { error: 'Failed to create comment' },
+      { error: 'Internal Server Error' },
       { status: 500 }
     );
   }
